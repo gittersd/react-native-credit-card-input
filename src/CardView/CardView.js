@@ -89,7 +89,7 @@ const CardView = props => {
         flipVertical={false}
         friction={10}
         perspective={2000}
-        clickable={false}
+        clickable={true}
         flip={shouldFlip()}
       >
         <ImageBackground
