@@ -38,7 +38,7 @@ const s = StyleSheet.create({
 });
 
 const CVC_INPUT_WIDTH = 70;
-const EXPIRY_INPUT_WIDTH = CVC_INPUT_WIDTH;
+const EXPIRY_INPUT_WIDTH = Dimensions.get("window").width * 0.5;
 const CARD_NUMBER_INPUT_WIDTH_OFFSET = 40;
 const CARD_NUMBER_INPUT_WIDTH = Dimensions.get("window").width * 0.5;
 const NAME_INPUT_WIDTH = CARD_NUMBER_INPUT_WIDTH;
@@ -192,11 +192,10 @@ export default class CreditCardInput extends Component {
         />
         <ScrollView
           ref="Form"
-          horizontal
           keyboardShouldPersistTaps="always"
           scrollEnabled={allowScroll}
-          showsHorizontalScrollIndicator={false}
-          style={s.form}
+          showsHorizontalScrollIndicator={true}
+          style={[s.form,{ width:'100%' }]}
           {...scrollViewProps}
         >
           {requiresName && (
@@ -213,7 +212,7 @@ export default class CreditCardInput extends Component {
           <CCInput
             {...this._inputProps("expiry")}
             keyboardType="numeric"
-            containerStyle={[s.inputContainer, inputContainerStyle]}
+            containerStyle={[s.inputContainer, inputContainerStyle, {width: EXPIRY_INPUT_WIDTH}]}
           />
           {requiresCVC && (
             <CCInput
